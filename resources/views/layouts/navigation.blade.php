@@ -56,14 +56,18 @@
               <div class="flex">
                 <div class="relative flex">
                   <!-- Item active: "border-indigo-600 text-indigo-600", Item inactive: "border-transparent text-gray-700 hover:text-gray-800" -->
-                  <button type="button" class="border-transparent text-gray-700 hover:text-gray-800 relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out" aria-expanded="false">Accueil</button>
+                  <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                                {{ __('Dashboard') }}
+                            </x-nav-link>
                 </div>
               </div>
 
               <div class="flex">
                 <div class="relative flex">
                   <!-- Item active: "border-indigo-600 text-indigo-600", Item inactive: "border-transparent text-gray-700 hover:text-gray-800" -->
-                  <button type="button" class="border-transparent text-gray-700 hover:text-gray-800 relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out" aria-expanded="false">Parfum</button>
+                  <x-nav-link :href="route('articles.index')" :active="request()->routeIs('articles.index')">
+                    {{ __('Parfum') }}
+                </x-nav-link>
                 </div>
 
                 <div class="absolute inset-x-0 top-full text-sm text-gray-500">
