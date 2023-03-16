@@ -30,9 +30,6 @@
         From: "opacity-100"
         To: "opacity-0"
     -->
-
-
-    
     </div>
   </div>
 
