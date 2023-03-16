@@ -37,24 +37,19 @@
   </div>
 
   <header class="relative bg-white">
-    <p class="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">Get free delivery on orders over $100</p>
+    <p class="flex h-10 items-center justify-center bg-orange-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">Bénéficiez de la livraison gratuite sur les commandes de plus de 100 €</p>
 
     <nav aria-label="Top" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="border-b border-gray-200">
         <div class="flex h-16 items-center">
           <!-- Mobile menu toggle, controls the 'mobileMenuOpen' state. -->
-          <button type="button" class="rounded-md bg-white p-2 text-gray-400 lg:hidden">
-            <span class="sr-only">Open menu</span>
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
-          </button>
+
 
           <!-- Logo -->
           <div class="ml-4 flex lg:ml-0">
             <a href="#">
               <span class="sr-only">Your Company</span>
-              <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="">
+              <img class="h-14 w-auto" src="{{url('/img/logo.jpg')}}" alt="logo">
             </a>
           </div>
 
@@ -64,14 +59,14 @@
               <div class="flex">
                 <div class="relative flex">
                   <!-- Item active: "border-indigo-600 text-indigo-600", Item inactive: "border-transparent text-gray-700 hover:text-gray-800" -->
-                  <button type="button" class="border-transparent text-gray-700 hover:text-gray-800 relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out" aria-expanded="false">Women</button>
+                  <button type="button" class="border-transparent text-gray-700 hover:text-gray-800 relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out" aria-expanded="false">Accueil</button>
                 </div>
               </div>
 
               <div class="flex">
                 <div class="relative flex">
                   <!-- Item active: "border-indigo-600 text-indigo-600", Item inactive: "border-transparent text-gray-700 hover:text-gray-800" -->
-                  <button type="button" class="border-transparent text-gray-700 hover:text-gray-800 relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out" aria-expanded="false">Men</button>
+                  <button type="button" class="border-transparent text-gray-700 hover:text-gray-800 relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out" aria-expanded="false">Parfum</button>
                 </div>
 
                 <div class="absolute inset-x-0 top-full text-sm text-gray-500">
@@ -80,9 +75,7 @@
 
                   <div class="relative bg-white">
                     <div class="mx-auto max-w-7xl px-8">
-                      <div class="grid grid-cols-2 gap-y-10 gap-x-8 py-16">
-                        <div class="col-start-2 grid grid-cols-2 gap-x-8"></div>
-                      </div>
+
                      
                     </div>
                   </div>
@@ -111,11 +104,7 @@
                 <div class="flex justify-between h-16">
                     <div class="flex">
                         <!-- Logo -->
-                        <div class="shrink-0 flex items-center">
-                            <a href="{{ route('dashboard') }}">
-                                <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
-                            </a>
-                        </div>
+                        
         
                         <!-- Navigation Links -->
                         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
