@@ -1,3 +1,6 @@
+<x-app-layout>
+@section('content')
+    
 <!--
   This example requires some changes to your config:
   
@@ -39,4 +42,6 @@
         <!-- More products... -->
       </div>
     </div>
-  </div>    
+  </div> 
+  @endsection
+</x-app-layout>

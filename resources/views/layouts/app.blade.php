@@ -28,6 +28,7 @@
             @endif
 
             <div>
+                @yield('content')
             </div>
             <!-- Page Content -->
             <main>
