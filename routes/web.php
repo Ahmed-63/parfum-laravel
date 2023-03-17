@@ -16,21 +16,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-<<<<<<< HEAD
-Route::resource("articles", ArticleController::class);
-
-=======
-// Route::get('/', function () {
-//     return view('home');
+//  Route::get('/', function () {
+//     return view('welcome');
 // });
+Route::resource("articles.show", ArticleController::class);
+
+ Route::get('/', function () {
+     return view('home');
+ })->name('home');;
 Route::resource("articles", ArticleController::class);
 
 
->>>>>>> 7070c30a2771c0e1dc467cac742c1e4a5fe9d165
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

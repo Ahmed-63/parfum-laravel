@@ -56,8 +56,8 @@
               <div class="flex">
                 <div class="relative flex">
                   <!-- Item active: "border-indigo-600 text-indigo-600", Item inactive: "border-transparent text-gray-700 hover:text-gray-800" -->
-                  <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                                {{ __('Dashboard') }}
+                  <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                                {{ __('Accueil') }}
                             </x-nav-link>
                 </div>
               </div>
@@ -120,8 +120,10 @@
                     <div class="hidden sm:flex sm:items-center sm:ml-6">
                         <x-dropdown align="right" width="48">
                             <x-slot name="trigger">
-                                <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                              <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                                  @auth
                                     <div>{{ Auth::user()->name }}</div>
+                                    @endauth
         
                                     <div class="ml-1">
                                         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -130,7 +132,23 @@
                                     </div>
                                 </button>
                             </x-slot>
-        
+
+                            <x-slot name="content">
+                              <x-dropdown-link :href="route('login')">
+                                  {{ __('Connexion') }}
+                              </x-dropdown-link>
+      
+                              <!-- Authentication -->
+                              <form method="POST" action="{{ route('register') }}">
+                                  @csrf
+      
+                                  <x-dropdown-link :href="route('register')">
+                                      {{ __('Inscription') }}
+                                  </x-dropdown-link>
+                              </form>
+                          </x-slot>
+
+                            @auth
                             <x-slot name="content">
                                 <x-dropdown-link :href="route('profile.edit')">
                                     {{ __('Profile') }}
@@ -143,10 +161,12 @@
                                     <x-dropdown-link :href="route('logout')"
                                             onclick="event.preventDefault();
                                                         this.closest('form').submit();">
-                                        {{ __('Log Out') }}
+                                        {{ __('Deconnexion') }}
                                     </x-dropdown-link>
                                 </form>
                             </x-slot>
+                             @endauth
+
                         </x-dropdown>
                     </div>
         
@@ -172,11 +192,12 @@
         
                 <!-- Responsive Settings Options -->
                 <div class="pt-4 pb-1 border-t border-gray-200">
+                  @auth
                     <div class="px-4">
                         <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
                         <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
                     </div>
-        
+                  @endauth
                     <div class="mt-3 space-y-1">
                         <x-responsive-nav-link :href="route('profile.edit')">
                             {{ __('Profile') }}
@@ -196,9 +217,6 @@
                 </div>
             </div>
         </nav>
-
-
-            
           </div>
         </div>
       </div>
