@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use Illuminate\Http\Request;
 use Illuminate\View\View; 
-use Illuminate\Http\RedirectResponse;
+
 
 class ArticleController extends Controller
 {
@@ -13,26 +13,18 @@ class ArticleController extends Controller
     public function index(): View
     {
         return view('articles.index', [
-            'articles' => Article::with('admin')->latest()->get(),
+            'articles' => Article::with('user')->latest()->get(),
         ]);
     }
    
     public function create()
     {
-        return view('articles.create');
+        //
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
-        $validated = $request->validate([
-            'content' => 'required|string|max:255',
-            'title' => 'required|string|max:255',
-            'image' => 'required|image'
-        ]);
- 
-        $request->admin()->articles()->create($validated);
- 
-        return redirect(route('articles.index'));
+        //
     }
 
 public function show(Article $article)
@@ -40,38 +32,22 @@ public function show(Article $article)
         return view('articles.show', compact('article'));
     }
 
-    public function edit(Article $article): View
+    public function edit(Article $article)
     {
 
-        $this->authorize('update', $article);
- 
-        return view('articles.edit', [
-            'articles' => $article,
-        ]);
+        //
     }
 
-    public function update(Request $request, Article $article): RedirectResponse
+    public function update(Request $request, Article $article)
     {
-        $this->authorize('update', $article);
-        $validated = $request->validate([
-            'content' => 'required|string|max:255',
-            'title' => 'required|string|max:255',
-            'image' => 'required|image'
-        ]);
-
-        $article->update($validated);
-        return redirect(route('articles.index'));
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Article $article):RedirectResponse
+    public function destroy(Article $article)
     {
-        $this->authorize('delete', $article);
- 
-        $article->delete();
- 
-        return redirect(route('articles.index')); 
+        //
     }
 }
