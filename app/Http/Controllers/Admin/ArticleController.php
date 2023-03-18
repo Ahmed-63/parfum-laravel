@@ -28,7 +28,7 @@ class ArticleController extends Controller
         $validated = $request->validate([
             'content' => 'required|string|max:255',
             'title' => 'required|string|max:255',
-            'price' => 'integer'
+            'price' => 'int'
 
         ]);
  

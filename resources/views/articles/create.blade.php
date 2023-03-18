@@ -19,7 +19,7 @@
             @endforeach
         </div>
 
-        <form action="{{ route('articles.store') }}" method="post" enctype="multipart/form-data" class="flex flex-col  rounded-lg p-4" style="background-color: rgba(0, 0, 0, 0.075); border: 2px solid rgba(0, 0, 0, 0.048);"> 
+        <form action="{{ route('articles.update') }}" method="post" enctype="multipart/form-data" class="flex flex-col  rounded-lg p-4" style="background-color: rgba(0, 0, 0, 0.075); border: 2px solid rgba(0, 0, 0, 0.048);"> 
         
             @csrf
 
