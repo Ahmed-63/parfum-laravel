@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->text('name');
             $table->text('content');
-            $table->string('image')->nullable();
-            $table->integer('price')->nullable();
-            $table->integer('stock')->nullable();
+            $table->string('image');
+            $table->integer('price');
+            $table->integer('stock');
             $table->timestamps();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
         });

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Article;
-use Illuminate\Http\Request;
 use Illuminate\View\View; 
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 
 class ArticleController extends Controller
@@ -25,44 +25,59 @@ class ArticleController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        $validated = $request->validate([
-            'content' => 'required|string|max:255',
-            'title' => 'required|string|max:255',
-            'price' => 'int'
+
+       $this->validate($request, [
+            'title' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255'],
+            'content' => ['required', 'string', 'max:255'],
+            'image' => ['required', 'image'],
+            'price' => ['required', 'numeric'],
+            'stock' => ['required', 'numeric'],
 
         ]);
- 
-        $request->user()->articles()->create($validated);
+       
+        
+        $request->user()->articles()->create([
+            'title' => $request->title,
+            'name' => $request->name,
+            'content' => $request->content,
+            'image' => $request->image->store('article'),
+            'price' => $request->price,
+            'stock' => $request->stock,
+        ]);
+       
  
         return redirect(route('articles.index'));
     }
 
-public function show(Article $article)
+    public function show(Article $article)
     {
         return view('articles.show', compact('article'));
     }
 
     public function edit(Article $article): View
     {
+       
 
         $this->authorize('update', $article);
  
-        return view('articles.edit', [
-            'articles' => $article,
-        ]);
+        return view('articles.edit', compact('article'));
     }
 
     public function update(Request $request, Article $article): RedirectResponse
     {
         $this->authorize('update', $article);
         $validated = $request->validate([
-            'content' => 'required|string|max:255',
-            'title' => 'required|string|max:255',
-
+            'title' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255'],
+            'content' => ['required', 'string', 'max:255'],
+            'image' => ['required', 'image'],
+            'price' => ['required', 'numeric'],
+            'stock' => ['required', 'numeric'],
         ]);
 
         $article->update($validated);
-        return redirect(route('articles.index'));
+        return redirect(route('dashboard'));
     }
 
     /**

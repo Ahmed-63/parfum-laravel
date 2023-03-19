@@ -68,9 +68,6 @@
                   <x-nav-link :href="route('articles.index')" :active="request()->routeIs('articles.index')">
                     {{ __('Parfum') }}
                   </x-nav-link>
-                  <x-nav-link :href="route('articles.create')" :active="request()->routeIs('articles.create')">
-                    {{ __('Créer un article') }}
-                    </x-nav-link>
                 </div>
 
                 <div class="absolute inset-x-0 top-full text-sm text-gray-500">
@@ -150,6 +147,14 @@
                                   
                               <x-dropdown-link :href="route('profile.edit')">
                                 {{ __('Profile') }}
+                              </x-dropdown-link>
+
+                              <x-dropdown-link :href="route('articles.create')">
+                                {{ __('Créer un article') }}
+                              </x-dropdown-link>
+
+                              <x-dropdown-link :href="route('dashboard')">
+                                {{ __('Liste des articles') }}
                               </x-dropdown-link>
                               
                               <!-- Authentication -->

@@ -43,7 +43,7 @@
                   </div>
                 </div>
       
-                <a href="#" class="inline-block rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-center font-medium text-white hover:bg-indigo-700">Shop Collection</a>
+                <a href="{{ route('articles.index')}}" class="inline-block rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-center font-medium text-white hover:bg-indigo-700">Collection</a>
               </div>
             </div>
           </div>

@@ -16,6 +16,9 @@ class Article extends Model
         'image',
         'title',
         'content',
+        'name',
+        'price',
+        'stock'
     ];
 
     public function user(): BelongsTo

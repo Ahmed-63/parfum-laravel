@@ -1,8 +1,5 @@
 <x-app-layout>
-  <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-    <h2 class="text-2xl font-bold tracking-tight text-gray-900">Customers also purchased</h2>
-
-    
+  <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 flex center">   
     <div class="bg-white">
       <div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             @foreach ($articles as $article)
@@ -17,7 +14,7 @@
                       <span aria-hidden="true" class="absolute inset-0"></span>
                       {{ $article->title}}
                     </h3>
-                    <p class="mt-1 text-sm text-gray-500">{{ $article->content}}</p>
+                    <p class="mt-1 text-sm text-gray-500">{{ $article->name}}</p>
                   </div>
                   <p class="text-sm font-medium text-gray-900"> {{ $article->price}}€ </p>
                 </div>
