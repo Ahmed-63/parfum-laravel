@@ -85,7 +85,7 @@
                         <h4 class="text-sm font-medium text-gray-900">Description</h4>
                       </div>
                       <div>
-                        <p> {{ $article->description}} </p>
+                        <p> {{ $article->content }} </p>
                       </div>
                     </div>
   

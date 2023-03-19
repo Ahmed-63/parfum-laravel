@@ -7,6 +7,7 @@ use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
@@ -57,27 +58,46 @@ class ArticleController extends Controller
 
     public function edit(Article $article): View
     {
-       
-
-        $this->authorize('update', $article);
  
-        return view('articles.edit', compact('article'));
+        return view('articles.edit', [
+            'article' => $article,
+        ]);
+        
     }
 
     public function update(Request $request, Article $article): RedirectResponse
     {
-        $this->authorize('update', $article);
-        $validated = $request->validate([
+        $rules = [
             'title' => ['required', 'string', 'max:255'],
             'name' => ['required', 'string', 'max:255'],
             'content' => ['required', 'string', 'max:255'],
-            'image' => ['required', 'image'],
             'price' => ['required', 'numeric'],
             'stock' => ['required', 'numeric'],
-        ]);
+        ];
+        if ($request->has("image")) {
+            // On ajoute la règle de validation pour "picture"
+            $rules["image"] = ['required', 'image'];
+        }
 
-        $article->update($validated);
-        return redirect(route('dashboard'));
+        $this->validate($request, $rules);
+
+        if ($request->has("picture")) {
+
+
+            Storage::delete($article->picture);
+
+            $chemin_image = $request->picture->store("posts");
+        }
+        
+        $article->update([
+            "title" => $request->title,
+            'name' => $request->name,
+            "content" => $request->content,
+            "picture" => isset($chemin_image) ? $chemin_image : $article->image,
+            'price' => $request->price,
+            'stock' => $request->stock,
+        ]);
+        return redirect(route('articles.index'));
     }
 
     /**
@@ -85,10 +105,12 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article):RedirectResponse
     {
-        $this->authorize('delete', $article);
- 
+        // On supprime l'image existant
+        Storage::delete($article->image);
+
+        // On les informations du $post de la table "posts"
         $article->delete();
- 
+
         return redirect(route('articles.index')); 
     }
 }

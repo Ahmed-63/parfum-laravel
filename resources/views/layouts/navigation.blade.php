@@ -144,19 +144,19 @@
                             </x-slot>
                             @auth
                             <x-slot name="content">
-                                  
+                              @if (Auth::user()->is_admin)
+                              <x-dropdown-link :href="route('dashboard')">
+                                {{ __('Dashboard') }}
+                              </x-dropdown-link>
+                                <x-dropdown-link :href="route('articles.create')">
+                                  {{ __('Créer un article') }}
+                                </x-dropdown-link>
+                              @endif
+                              
                               <x-dropdown-link :href="route('profile.edit')">
                                 {{ __('Profile') }}
                               </x-dropdown-link>
 
-                              <x-dropdown-link :href="route('articles.create')">
-                                {{ __('Créer un article') }}
-                              </x-dropdown-link>
-
-                              <x-dropdown-link :href="route('dashboard')">
-                                {{ __('Liste des articles') }}
-                              </x-dropdown-link>
-                              
                               <!-- Authentication -->
                               <form method="POST" action="{{ route('logout') }}">
                                 @csrf
