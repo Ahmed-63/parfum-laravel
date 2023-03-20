@@ -48,7 +48,7 @@ class ArticleController extends Controller
         ]);
        
  
-        return redirect(route('articles.index'));
+        return redirect(route('dashboard'));
     }
 
     public function show(Article $article)
@@ -97,7 +97,7 @@ class ArticleController extends Controller
             'price' => $request->price,
             'stock' => $request->stock,
         ]);
-        return redirect(route('articles.index'));
+        return redirect(route('dashboard'));
     }
 
     /**
@@ -111,6 +111,6 @@ class ArticleController extends Controller
         // On les informations du $post de la table "posts"
         $article->delete();
 
-        return redirect(route('articles.index')); 
+        return redirect(route('dashboard')); 
     }
 }
