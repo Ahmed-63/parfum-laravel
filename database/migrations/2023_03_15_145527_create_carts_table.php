@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
-            $table->string('quantity');
-            $table->string('price_article');
-            $table->string('price_all');
+            $table->string('title');
+            $table->string('name');
+            $table->integer('quantity');
+            $table->integer('price');
             $table->timestamps();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('article_id')->constrained()->cascadeOnDelete();

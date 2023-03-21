@@ -71,8 +71,6 @@
                 <section aria-labelledby="options-heading" class="mt-10">
                   <h3 id="options-heading" class="sr-only">Product options</h3>
   
-                  <form>
-                    <!-- Size -->
                     <div>
                       <h4 class="text-sm font-medium text-gray-900">Taille</h4>
                       <p>50 ml</p>
@@ -89,8 +87,7 @@
                       </div>
                     </div>
   
-                    <button type="submit" class="mt-6 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Ajouter au panier</button>
-                  </form>
+                    <a href="{{ route('carts.show',$cartgit) }}" class="mt-6 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Ajouter au panier</a>
                 </section>
               </div>
             </div>

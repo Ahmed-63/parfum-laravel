@@ -2,55 +2,63 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\Cart;
 use Illuminate\Http\Request;
 
+
+
 class CartController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
-        //
-    }
+        return view('carts.index', [
+            'cart' => Cart::with('user')->latest()->get(),
+        ]);
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    }
+   
     public function create()
     {
-        //
+        
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function store(Request $request, Article $article )
     {
-        //
+        $this->validate($request, [
+            'title' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255'],
+            'price' => ['required', 'numeric'],
+            'quantity' => ['required', 'numeric'],
+
+        ]);
+       
+        
+        $request->user()->carts()->create([
+            'title' => $article->title,
+            'name' => $article->name,
+            'price' => $article->price,
+            'quantity' => $request->quantify,
+        ]);
+       
+ 
+        return redirect(route('carts.index'));
+
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Cart $cart)
+public function show(Article $article)
     {
-        //
+        return view('carts.show', compact('cart'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Cart $cart)
+    public function edit(Article $article)
     {
+
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Cart $cart)
+    public function update(Request $request, Article $article)
     {
         //
     }
@@ -58,7 +66,7 @@ class CartController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Cart $cart)
+    public function destroy(Article $article)
     {
         //
     }
